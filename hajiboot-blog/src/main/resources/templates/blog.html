@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Hello Spring Blog</title>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.4/dist/css/bootstrap.min.css"/>
+
+<link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/1.0.3/css/clean-blog.min.css"/>
+
+</head>
+<body>
+	<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/blog">Home</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    
+                    <li>
+                    <div class="dropdown">
+  							<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default">
+  									Post
+    									  <span class="caret"></span>
+  							</button>
+  								<ul class="dropdown-menu" aria-labelledby="dLabel">
+    							   <li> <a href="/post" style="background-color:blue">Sample Post</a> </li>
+    							   <li> <a href="/form" style="background-color:green">Write Post</a> </li>
+  								</ul>
+							</div>
+                           
+                    </li>
+                    
+                    <li>
+                        <a href="/contact">Contact</a>
+                    </li>
+                    <li>
+  <a id="menu-toggle" href="#" class="btn btn-dark"><i class="fa fa-bars"></i></a>
+
+                            
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header"  style="background-image: url('/images/home-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Clean Blog</h1>
+                        <hr class="small"/>
+                        <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+      <div class="dropdown">
+  							<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default">
+  									Category List
+    									  <span class="caret"></span>
+  							</button>
+  								<ul class="dropdown-menu"  aria-labelledby="dLabel">
+    							   <li th:each="c:${categorylist}"> <a th:href="@{/category/(name=${c.name})}" th:text="${c.name}">sdfsd</a> </li>
+    							  
+  							</ul>
+							</div>
+
+   
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              
+            
+                
+                <hr/>
+              
+                <div class="post-preview" th:each="post : ${postList.content}">
+                  
+                    <a th:href="@{/artical/(id=${post.id})}" >
+                        <h2 class="post-title" th:text="${post.subject}">spring</h2><br/>
+                        <h4 class="post-subtitle" th:text="${post.subtitle}">fu</h4>
+                        
+                    </a>
+                    <p class="post-meta">Posted by 朴文学<h4 th:text="${post.reg}">2017 2 14</h4> </p>
+                </div>
+             
+                <hr/>
+                
+            </div>
+        </div>
+ </div>
+
+    <hr/>
+      
+    <!-- Footer -->
+    
+  
+     <ul class="pager">
+                	
+                    <li class="previous">
+                        <a th:if="${!postList.first}" th:href="@{/blog/(page=${postList.number-1})}">&larr; Newer Posts</a>
+                    </li>
+                    
+               
+                    <li class="next">
+                        <a  th:if="${!postList.last}" th:href="@{/blog/(page=${postList.number+1})}" >Older Posts &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+	<script src="/webjars/jquery/2.1.3/dist/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/3.3.4/dist/js/bootstrap.min.js"></script>
+	<script src="/webjars/origoni-startbootstrap-clean-blog/1.0.3/js/clean-blog.min.js"></script>
+	
+
+</body>
+</html>

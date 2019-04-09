@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>로그인 폼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     
+      
+    
+	<link href="/css/style.css" rel="stylesheet"/>
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"
+        th:href="@{/css/bootstrap.min.css}" /> 
+    
+</head>
+<body>
+
+<div class="col-md-12">
+
+        <div class="page-header align center">
+    	    <h1 >회원가입</h1>
+        </div>
+        <form class="form-horizontal" th:action="@{/sign}" th:object="${User}"
+         method="post">
+         <div class="form-group" >
+          <label class="col-sm-3 control-label" for="inputName">이름</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="username" type="text" placeholder="username" th:field="*{username}"/>
+           
+           
+        </div>
+        </div>
+        <div class="form-group" >
+          <label class="col-sm-3 control-label" for="inputPassword">비밀번호</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="encodedPassword" type="text" placeholder="비밀번호" th:field="*{encodedPassword}" />
+       
+        </div>
+         
+        </div>
+        <button type="submit">log</button>
+        </form>
+         
+        
+          </div>
+       
+       
+          
+        
+      
+  </body>
+</html>
+                                                                                                                                                                               
